@@ -1,6 +1,6 @@
 import React from 'react'
-import AppBody from './components/AppBody'
-import SearchBar from './components/SearchBar'
+import AppBody from './AppBody'
+import SearchBar from './SearchBar'
 
 
 function App() {

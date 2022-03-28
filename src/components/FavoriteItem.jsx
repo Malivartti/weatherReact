@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import Remove from '../img/remove.svg';
-import { changeCity, removeCity } from './../store/cityReducer';
+import { changeCity, removeCity } from '../actions';
 
 const FavoriteItem = ({ cityName }) => {
   const dispatch = useDispatch()

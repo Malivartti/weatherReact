@@ -2,9 +2,13 @@ import React, { useState } from 'react'
 import DetailsWindow from './DetailsWindow'
 import ForecastWindow from './ForecastWindow'
 import NowWindow from './NowWindow'
+import { useSelector } from 'react-redux';
 
-const ResultWindow = ({ cityData, forecastData }) => {
+
+const ResultWindow = () => {
   const [currentTab, setCurrentTab] = useState('Now')
+  const cityData = useSelector(state => state.cityData)
+  const forecastData = useSelector(state => state.cityForecast)
 
   return (
     <div className='main__result'>
@@ -20,17 +24,17 @@ const ResultWindow = ({ cityData, forecastData }) => {
         <button
           className='tab-item btn-reset'
           onClick={e => setCurrentTab(e.target.textContent)}
-          style={currentTab === 'Now' ? {backgroundColor: 'black', color: 'white'} : {}}
+          style={currentTab === 'Now' ? { backgroundColor: 'black', color: 'white' } : {}}
         >Now</button>
         <button
           className='tab-item btn-reset'
           onClick={e => setCurrentTab(e.target.textContent)}
-          style={currentTab === 'Details' ? {backgroundColor: 'black', color: 'white'} : {}}
+          style={currentTab === 'Details' ? { backgroundColor: 'black', color: 'white' } : {}}
         >Details</button>
         <button
           className='tab-item btn-reset'
           onClick={e => setCurrentTab(e.target.textContent)}
-          style={currentTab === 'Forecast' ? {backgroundColor: 'black', color: 'white'} : {}}
+          style={currentTab === 'Forecast' ? { backgroundColor: 'black', color: 'white' } : {}}
         >Forecast</button>
       </div>
     </div>

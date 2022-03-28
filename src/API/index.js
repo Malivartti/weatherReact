@@ -7,7 +7,9 @@ export const server = {
     return await response.json();
   },
 
-  loadForecast: async function (cityId) {
+  loadForecast: async function (cityName) {
+    const city = await this.loadCity(cityName)
+    const cityId = await city.id
     const response = await fetch(this.getForecastUrl(cityId));
     return await response.json()
   },

@@ -1,27 +1,22 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { server } from '../API'
-import { formatWeatherData } from '../utils/'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import FavoriteList from './FavoriteList'
 import ResultWindow from './ResultWindow'
+import { fetchCityData, fetchCityForecast } from './../asyncAction/index';
 
 
 const AppBody = () => {
   const cityName = useSelector(store => store.city)
-  const [cityData, setCityData] = useState({})
-  const [forecastData, setForecastData] = useState({})
+  const dispatch = useDispatch()
 
   useEffect(async () => {
-    const response = await server.loadCity(cityName)
-    formatWeatherData(response, setCityData)
-
-    const response2 = await server.loadForecast(response.id)
-    setForecastData(response2);
+    dispatch(fetchCityData(cityName))
+    dispatch(fetchCityForecast(cityName))
   }, [cityName])
 
   return (
     <div className='main'>
-      <ResultWindow cityData={cityData} forecastData={forecastData} />
+      <ResultWindow />
       <FavoriteList />
     </div>
   )

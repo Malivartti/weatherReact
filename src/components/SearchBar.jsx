@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Search from '../img/search_btn.svg'
 import { useDispatch } from 'react-redux';
-import { changeCity } from './../store/cityReducer';
+import { changeCity } from '../actions';
 
 
 const SearchBar = () => {
@@ -10,7 +10,7 @@ const SearchBar = () => {
 
   function onSubmit(e) {
     e.preventDefault()
-    dispatch(changeCity(value))
+    if (value) dispatch(changeCity(value))
   }
 
   return (

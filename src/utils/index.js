@@ -18,8 +18,8 @@ export function timeForecastConverter(value) {
   }
 }
 
-export async function formatWeatherData(cityData, callback) {
-  const data = await cityData;
+export function formatWeatherData(cityData) {
+  const data = cityData;
   const dir = {
     name: data.name,
     degree: Math.round(data.main.temp) + '°',
@@ -29,16 +29,15 @@ export async function formatWeatherData(cityData, callback) {
     sunset: timeConverter(data.sys.sunset),
     picture: server.getPictureUrl(data.weather[0].icon, 4),
   }
-  callback(dir)
+  return dir
 }
 
-export async function formatForecastData(forecastData, callback) {
-  const data = await forecastData;
+export function formatForecastData(forecastData) {
+  const data = forecastData;
   const array = []
 
   data.list.forEach(data => {
     const date = timeForecastConverter(data.dt)
-    
     array.push({
       day: date.day,
       time: date.time,
@@ -48,7 +47,7 @@ export async function formatForecastData(forecastData, callback) {
       picture: server.getPictureUrl(data.weather[0].icon, 2),
     })
   })
-  callback({ name: data.city.name, list: array })
+  return ({ name: data.city.name, list: array })
 }
 
 export function isData() {

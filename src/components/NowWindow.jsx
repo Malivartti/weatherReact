@@ -1,7 +1,7 @@
 import React from 'react'
 import Like from '../img/like_btn.svg?component';
 import { useSelector, useDispatch } from 'react-redux';
-import { addCity, removeCity } from '../store/cityReducer';
+import { addCity, removeCity } from '../actions';
 
 
 const NowWindow = ({ cityData }) => {
