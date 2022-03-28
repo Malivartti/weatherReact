@@ -4,14 +4,14 @@ export const server = {
 
   loadCity: async function (cityName) {
     const response = await fetch(this.getCityUrl(cityName));
-    return await response.json();
+    return response.json();
   },
 
   loadForecast: async function (cityName) {
     const city = await this.loadCity(cityName)
     const cityId = await city.id
     const response = await fetch(this.getForecastUrl(cityId));
-    return await response.json()
+    return response.json()
   },
 
   getPictureUrl: function (icon, x) {

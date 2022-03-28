@@ -57,7 +57,7 @@ export function isData() {
 export function getData() {
   const dir = {
     city: localStorage.getItem('city'),
-    favorites: localStorage.getItem('favorites')?.split(', ')
+    favorites: localStorage.getItem('favorites')?.split(', ').filter(i => i !== '')
   }
   return dir
 }

@@ -5,6 +5,8 @@ import thunk from "redux-thunk";
 
 
 export const store = createStore(cityReducer, composeWithDevTools(applyMiddleware(thunk)))
-// store.subscribe(() => {
-//   useSaveData()
-// })
+store.subscribe(() => {
+  const data = store.getState()
+  localStorage.setItem('city', data.city)
+  localStorage.setItem('favorites', data.favorites.join(', '))
+})
